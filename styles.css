@@ -1,3 +1,21 @@
 body {
-  background-color: yellowgreen;
+  background-color: rgba(5, 3, 124, 0.61);
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-wrapper {
+}
+
+.logo {
+}
+
+.weather-section {
+}
+
+.search-bar {
 }
