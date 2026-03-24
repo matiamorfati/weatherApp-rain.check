@@ -8,15 +8,52 @@
   </head>
   <body>
     <div class="main-page">
-      <div class="logo-wrapper">
+      <div class="logo-wrapper drop-shadow">
         <h1 class="logo">rain.check</h1>
       </div>
-      <div class="weather-section">
-        <h1>hello, lets's see the weather for today</h1>
-        <div>
-          <div class="search-bar">where?</div>
+      <div class="page-content drop-shadow border-angled">
+        <div class="search-section border-angled drop-shadow grid-card">
+          <div class="search-bar">
+            Adress, City or Zip Code<button class="search-bar-btn">🔍</button>
+          </div>
+        </div>
+
+        <div class="home-city-section border-angled drop-shadow grid-card">
+          <div class="current-home-city" id="currentHome">Cracow</div>
+          <button class="change-current-city-btn" id="changeHome">
+            Change Home
+          </button>
+        </div>
+
+        <div class="weather-section border-angled drop-shadow grid-card">
+          <div class="main-weather-card">
+            <div class="card-title">Right now in ...</div>
+            <div class="main-weather-card-info-container">
+              <div class="main-weather-temp">14C</div>
+              <div class="main-weather-card-info">
+                <div>Feels like:</div>
+                <div>Humidity is ...</div>
+                <div>Rain check:</div>
+              </div>
+            </div>
+          </div>
+          <div class="full-info-card">
+            <div class="temperature-div"></div>
+            <div class="felt-temperature-card"></div>
+            <div class="rain-possibility"></div>
+          </div>
+        </div>
+
+        <div class="places-listed border-angled grid-card">
+          <div class="listed-place">Warsaw</div>
+          <div class="listed-place">Gdynia</div>
+          <div class="listed-place">Zakopane</div>
+          <div class="listed-place">Wroclaw</div>
+          <div class="listed-place">Ladek Zdroj</div>
+          <div class="listed-place">Katowice</div>
         </div>
       </div>
+      <div class="footer"></div>
     </div>
 
     <script src="script.js"></script>
