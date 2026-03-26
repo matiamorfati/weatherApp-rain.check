@@ -1,5 +1,5 @@
-import API_KEY from key.js
-
+import API_KEY from "./key.js";
+/* 
 async function getWeather(city) {
     try {
         const response = await fetch(`http,key,city`); //tu poprawic
@@ -13,7 +13,6 @@ async function getWeather(city) {
             description: data.currentConditions.conditions,
             feelslike: data.currentConditions.feelslike,
             humidity: data.currentConditions.humidity,
-            precip: data.currentConditions.precipprob,
             icon: data.currentConditions.icon
         };
 
@@ -23,7 +22,36 @@ async function getWeather(city) {
         console.error("error from API:", error);
         return null;
     }
+} */
+
+async function fetchWeather(city) {
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${API_KEY}&include=current`;
+
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("unable to download data from api");
+
+  return response.json();
 }
 
-getWeather('Krakow').then(resolvedPromise => console.log(resolvedPromise))
+function processWeatherData(data) {
+  return {
+    city: data.resolvedAddress,
+    temp: data.currentConditions.temp,
+    description: data.currentConditions.conditions,
+    feelslike: data.currentConditions.feelslike,
+    humidity: data.currentConditions.humidity,
+    icon: data.currentConditions.icon,
+  };
+}
 
+async function getWeatherData(city) {
+  try {
+    const rawData = await fetchWeather(city);
+    return processWeatherData(rawData);
+  } catch (error) {
+    console.error("", error);
+    return null;
+  }
+}
+
+export default getWeatherData;
