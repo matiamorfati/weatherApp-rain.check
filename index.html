@@ -13,9 +13,17 @@
       </div>
       <div class="page-content drop-shadow border-angled">
         <div class="search-section border-angled drop-shadow grid-card">
-          <div class="search-bar">
-            Adress, City or Zip Code<button class="search-bar-btn">🔍</button>
-          </div>
+          <form action="" id="weather-form">
+            <div class="search-bar border-angled">
+              <input
+                type="text"
+                id="location-input"
+                placeholder="Adress, City or Zip Code"
+                required
+              />
+              <button type="submit" class="search-bar-btn">🔍</button>
+            </div>
+          </form>
         </div>
 
         <div class="home-city-section border-angled drop-shadow grid-card">
@@ -26,7 +34,7 @@
         </div>
 
         <div class="weather-section border-angled drop-shadow grid-card">
-          <div class="main-weather-card">
+          <div class="main-weather-card" id="weather-output">
             <div class="card-title">Right now in ...</div>
             <div class="main-weather-card-info-container">
               <div class="main-weather-temp">14C</div>
@@ -44,7 +52,7 @@
           </div>
         </div>
 
-        <div class="places-listed border-angled grid-card">
+        <div class="places-listed border-angled grid-card" id="weather-list">
           <div class="listed-place">Warsaw</div>
           <div class="listed-place">Gdynia</div>
           <div class="listed-place">Zakopane</div>

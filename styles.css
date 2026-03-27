@@ -187,7 +187,7 @@ body {
 .search-section {
   grid-area: 1/1/1/4;
   background: linear-gradient(-90deg, var(--vibrant-coral), var(--cloudy-aqua)),
-    rgba(255, 217, 0, 0.178);
+    rgba(255, 217, 0, 0);
 }
 
 .weather-section {
@@ -207,6 +207,44 @@ body {
     var(--electric-aqua) 60%
   );
   grid-area: 2/4/2/4;
+}
+
+.search-bar {
+  display: flex;
+  padding: var(--space-3);
+  background-color: var(--color-bg);
+  font-size: var(--fs-xl);
+  justify-content: space-between;
+  margin: 1rem 8rem;
+}
+
+input {
+  all: unset;
+  border: none;
+  background-color: var(--color-bg);
+  width: 100%;
+}
+
+input::placeholder {
+  transition: opacity 0.2s;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+.search-bar-btn {
+  border: none;
+  background-color: var(--color-bg);
+  transition: all 0.3s;
+  border-radius: 8px;
+  padding: var(--space-1) var(--space-4);
+  width: max(100%, 180px); /* POPRAWIC to xddd */
+}
+
+.search-bar-btn:hover {
+  background-color: #dddddd;
+  cursor: pointer;
 }
 
 .footer {
