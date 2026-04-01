@@ -1,10 +1,38 @@
 import getWeatherData from "./api.js";
+import { DOMcontrollerInit } from "./DOMcontroller.js";
+import { DOMrender } from "./DOMrenderer.js";
 
-console.log("odwaznie lecimy");
+DOMcontrollerInit(handleWeatherFormSubmit);
 
-async function testAPI(city) {
-  const APIresponse = await getWeatherData(city);
-  console.log(APIresponse);
+async function handleWeatherFormSubmit(location) {
+  try {
+    DOMrender.LoadingAnimation();
+    const weatherData = await getWeatherData(location);
+    DOMrender.MainSearchedWeather(weatherData);
+  } catch (error) {
+    DOMrender.Error(error);
+  } finally {
+    DOMrender.EndLoadingAnimation();
+  }
 }
 
-testAPI("Krakow");
+async function pageInit() {
+  const homeCityData = await getWeatherData(homeCity);
+  const listedCities = {
+    Warsaw: await getWeatherData("Warsaw"),
+    Wroclaw: await getWeatherData("Wroclaw"),
+    Katowice: await getWeatherData("Katowice"),
+    Gdansk: await getWeatherData("Gdansk"),
+    "Ladek Zdroj": await getWeatherData("Ladek Zdroj"),
+  };
+  DOMrender.DOMrenderInit(listedCities, homeCityData);
+}
+
+/* let homeCity = "krakow";
+DOMcontrollerInit(handleWeatherFormSubmit);
+pageInit();
+ */
+const weatherData = await getWeatherData("krakow");
+DOMrender.WeatherBanner(weatherData);
+
+console.log(weatherData);

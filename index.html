@@ -7,58 +7,121 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="main-page">
+    <div class="main-page" id="background-img">
       <div class="logo-wrapper drop-shadow">
         <h1 class="logo">rain.check</h1>
       </div>
       <div class="page-content drop-shadow border-angled">
         <div class="search-section border-angled drop-shadow grid-card">
-          <form action="" id="weather-form">
-            <div class="search-bar border-angled">
+          <form id="weather-form">
+            <div class="search-bar border-angled" id="search-div">
+              <button type="submit" class="search-bar-btn">
+                <img
+                  class="search-icon"
+                  src="./src/icons/search-2903.svg"
+                  alt="search button"
+                />
+              </button>
               <input
                 type="text"
                 id="location-input"
+                name="location"
                 placeholder="Adress, City or Zip Code"
                 required
               />
-              <button type="submit" class="search-bar-btn">🔍</button>
             </div>
           </form>
         </div>
 
         <div class="home-city-section border-angled drop-shadow grid-card">
-          <div class="current-home-city" id="currentHome">Cracow</div>
-          <button class="change-current-city-btn" id="changeHome">
-            Change Home
+          <div class="flex-container-home">
+            <div class="current-home-city" id="current-home">Cracow</div>
+            <img
+              class="homeIcon"
+              src="./src/icons/home-175.svg"
+              alt="home icon"
+            />
+          </div>
+          <button class="change-current-city-btn" id="change-home-btn">
+            Change Home City
           </button>
         </div>
 
         <div class="weather-section border-angled drop-shadow grid-card">
           <div class="main-weather-card" id="weather-output">
-            <div class="card-title">Right now in ...</div>
             <div class="main-weather-card-info-container">
+              <div class="card-title">Right now in Krakow</div>
               <div class="main-weather-temp">14C</div>
               <div class="main-weather-card-info">
-                <div>Feels like:</div>
-                <div>Humidity is ...</div>
-                <div>Rain check:</div>
+                <div>Feels like 10C</div>
+                <div>Humidity is 80%</div>
+                <div>Rain check is 50%</div>
               </div>
             </div>
+            <div class="main-weather-icon">ICON</div>
           </div>
-          <div class="full-info-card">
-            <div class="temperature-div"></div>
-            <div class="felt-temperature-card"></div>
-            <div class="rain-possibility"></div>
+          <div class="hourly-weather-card border-angled" id="hourly-grid">
+            <div class="hourly-grid-card border-angled">
+              <div class="hour">10</div>
+              <div class="weather-icon-hourly">sunyicon</div>
+              <div class="temperature-hourly">13</div>
+            </div>
+            <div class="hourly-grid-card border-angled">
+              <div class="hour">10</div>
+              <div class="weather-icon-hourly">sunyicon</div>
+              <div class="temperature-hourly">13</div>
+            </div>
+            <div class="hourly-grid-card border-angled">
+              <div class="hour">10</div>
+              <div class="weather-icon-hourly">sunyicon</div>
+              <div class="temperature-hourly">13</div>
+            </div>
+            <div class="hourly-grid-card border-angled">
+              <div class="hour">10</div>
+              <div class="weather-icon-hourly">sunyicon</div>
+              <div class="temperature-hourly">13</div>
+            </div>
+          </div>
+          <div class="daily-weather-card border-angled" id="daily-grid">
+            <div class="daily-grid-card border-angled">
+              <div class="day">monday</div>
+              <div class="weather-icon-daily">sunnyicon</div>
+              <div class="temperature-hourly">20</div>
+            </div>
+            <div class="daily-grid-card border-angled">
+              <div class="day">monday</div>
+              <div class="weather-icon-daily">sunnyicon</div>
+              <div class="temperature-hourly">20</div>
+            </div>
+            <div class="daily-grid-card border-angled">
+              <div class="day">monday</div>
+              <div class="weather-icon-daily">sunnyicon</div>
+              <div class="temperature-hourly">20</div>
+            </div>
           </div>
         </div>
 
-        <div class="places-listed border-angled grid-card" id="weather-list">
-          <div class="listed-place">Warsaw</div>
-          <div class="listed-place">Gdynia</div>
-          <div class="listed-place">Zakopane</div>
-          <div class="listed-place">Wroclaw</div>
-          <div class="listed-place">Ladek Zdroj</div>
-          <div class="listed-place">Katowice</div>
+        <div class="places-listed border-angled grid-card" id="listed-cities">
+          <div class="listed-place border-angled">
+            <div class="city-name">Warsaw</div>
+            <div class="weather-info">18C feels like 10C, Rain</div>
+          </div>
+          <div class="listed-place border-angled">
+            <div class="city-name">Warsaw</div>
+            <div class="weather-info">18C feels like 10C, Rain</div>
+          </div>
+          <div class="listed-place border-angled">
+            <div class="city-name">Warsaw</div>
+            <div class="weather-info">18C feels like 10C, Rain</div>
+          </div>
+          <div class="listed-place border-angled">
+            <div class="city-name">Warsaw</div>
+            <div class="weather-info">18C feels like 10C, Rain</div>
+          </div>
+          <div class="listed-place border-angled">
+            <div class="city-name">Warsaw</div>
+            <div class="weather-info">18C feels like 10C, Rain</div>
+          </div>
         </div>
       </div>
       <div class="footer"></div>

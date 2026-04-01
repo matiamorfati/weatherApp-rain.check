@@ -40,6 +40,7 @@ function processWeatherData(data) {
     description: data.currentConditions.conditions,
     feelslike: data.currentConditions.feelslike,
     humidity: data.currentConditions.humidity,
+    rainChance: data.currentConditions.precipprob,
     icon: data.currentConditions.icon,
   };
 }

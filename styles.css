@@ -116,12 +116,15 @@ h6 {
 
 body {
   background-color: var(--color-bg);
+  font-size: var(--fs-base);
 }
 
 .main-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .border-angled {
@@ -155,8 +158,8 @@ body {
   width: 24rem;
   display: flex;
   justify-content: center;
-  font-size: calc(1.5 * var(--fs-3xl));
-  font-weight: 100;
+  font-size: var(--fs-3xl);
+  font-weight: 200;
   color: var(--color-secondary);
 }
 
@@ -166,11 +169,11 @@ body {
 
 .page-content {
   width: 100vw;
-  height: 85vh;
+  height: 100%;
   background-color: var(--color-surface);
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 4fr);
   gap: var(--space-3);
   padding: var(--space-3);
 }
@@ -182,12 +185,19 @@ body {
     var(--vibrant-coral),
     rgb(255, 104, 187) 70%
   );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .search-section {
   grid-area: 1/1/1/4;
   background: linear-gradient(-90deg, var(--vibrant-coral), var(--cloudy-aqua)),
     rgba(255, 217, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weather-section {
@@ -198,6 +208,11 @@ body {
     var(--cloudy-aqua),
     #7fc4eb
   );
+
+  display: grid;
+  gap: var(--space-2);
+  grid-template-rows: 5fr 2fr;
+  grid-template-columns: 4fr 1fr;
 }
 
 .places-listed {
@@ -207,11 +222,18 @@ body {
     var(--electric-aqua) 60%
   );
   grid-area: 2/4/2/4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#weather-form {
+  min-width: 80%;
 }
 
 .search-bar {
   display: flex;
-  padding: var(--space-3);
+  padding: var(--space-1);
   background-color: var(--color-bg);
   font-size: var(--fs-xl);
   justify-content: space-between;
@@ -238,8 +260,8 @@ input:focus::placeholder {
   background-color: var(--color-bg);
   transition: all 0.3s;
   border-radius: 8px;
-  padding: var(--space-1) var(--space-4);
-  width: max(100%, 180px); /* POPRAWIC to xddd */
+  padding: var(--space-1) var(--space-3);
+  margin-right: var(--space-1);
 }
 
 .search-bar-btn:hover {
@@ -247,12 +269,113 @@ input:focus::placeholder {
   cursor: pointer;
 }
 
+.search-icon {
+  width: 1.5rem;
+}
+
+.listed-place {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--fs-xl);
+}
 .footer {
   width: 100%;
   height: 5vh;
   background: linear-gradient(135deg, #00649e, #0a7bbd, #3aa0d8);
 }
 
+.current-home-city {
+  font-size: var(--fs-2xl);
+}
+
+.homeIcon {
+  width: 2.75rem;
+  opacity: 0.7;
+}
+
+.flex-container-home {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+}
+
+.change-current-city-btn {
+  border: none;
+  background-color: rgba(236, 236, 236, 0.274);
+  transition: all 0.3s;
+  border-radius: 8px;
+  width: 70%;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.change-current-city-btn:hover {
+  background-color: rgba(132, 213, 250, 0.589);
+}
+
+.main-weather-card {
+  display: flex;
+}
+
+.main-weather-card-info-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 var(--space-3);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--fs-2xl);
+}
+.card-title {
+  font-size: var(--fs-3xl);
+}
+
+.main-weather-temp {
+  font-size: var(--fs-3xl);
+  margin-left: var(--space-2);
+}
+
+.main-weather-card-info {
+  padding-left: var(--space-4);
+}
+
+.daily-weather-card {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: 80px;
+  grid-area: 1/2/3/3;
+  overflow-y: auto;
+
+  gap: var(--space-2);
+  padding: var(--space-1);
+  font-size: var(--fs-lg);
+}
+
+.daily-grid-card {
+  padding: var(--space-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hourly-weather-card {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 120px;
+  height: 100%;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  font-size: var(--fs-lg);
+}
+
+.hourly-grid-card {
+  padding: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 /* 
 zrobic fajne tlo z gradientu
 zrobic tak ze jest ten search bar
