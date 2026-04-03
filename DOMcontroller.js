@@ -7,8 +7,8 @@ export function DOMcontrollerInit(handleWeatherFormSubmit) {
 
   getWeatherForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    new formData(getWeatherForm).get("location");
-    const location = getWeatherForm.sele;
+    const formData = new FormData(e.target);
+    const location = formData.get("location");
     handleWeatherFormSubmit(e.target.location.value);
   });
 }

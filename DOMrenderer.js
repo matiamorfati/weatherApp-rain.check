@@ -19,25 +19,27 @@ export const DOMrender = (() => {
 
   function HourlyWeather(weatherData) {}
 
-  function DailyWeather(weatherData) {
-    DOMelements.searchBar.innerHTML = "loading";
-  }
+  function DailyWeather(weatherData) {}
 
   function WeatherBanner(weatherData) {
     DOMelements.banner.innerHTML = `
-    <div class="main-weather-card-info-container">
+    <div class="flex-container-weather" >
+      <div class="main-weather-card-info-container">
               <div class="card-title">Right now in ${weatherData.city}</div>
-              <div class="main-weather-temp"> ${weatherData.temp}°C</div>
+              <div class="main-weather-temp">Temperature: ${
+                weatherData.temp
+              }°C</div>
               <div class="main-weather-card-info">
                 <div>Feels like ${weatherData.feelslike}°C</div>
                 <div>Humidity is ${weatherData.humidity}%</div>
                 <div>Rain check is ${weatherData.rainChance}%</div>
               </div>
-            </div>
+      </div>
             <img class="main-weather-icon" src="./src/icons/${getIcon(
               weatherData.icon
             )}" alt="${weatherData.icon} icon"/> 
-            </div>
+    </div>
+            
     `;
   }
 
@@ -45,9 +47,27 @@ export const DOMrender = (() => {
 
   function ListedCitiesWeather(listedCitiesWeatherData) {}
 
-  function LoadingAnimation() {}
+  function LoadingAnimation() {
+    DOMelements.searchBar.innerHTML = "loading";
+  }
 
-  function EndLoadingAnimation() {}
+  function EndLoadingAnimation() {
+    DOMelements.searchBar.innerHTML = `
+    <button type="submit" class="search-bar-btn">
+                <img
+                  class="search-icon"
+                  src="./src/icons/search-2903.svg"
+                  alt="search button"
+                />
+              </button>
+              <input
+                type="text"
+                id="location-input"
+                name="location"
+                placeholder="Adress, City or Zip Code"
+                required
+              />`;
+  }
 
   function Error(errorMesage) {}
 

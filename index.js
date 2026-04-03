@@ -32,7 +32,7 @@ async function pageInit() {
 DOMcontrollerInit(handleWeatherFormSubmit);
 pageInit();
  */
-const weatherData = await getWeatherData("krakow");
+const weatherData = await getWeatherData("ladek zdroj");
 DOMrender.WeatherBanner(weatherData);
 
 console.log(weatherData);
