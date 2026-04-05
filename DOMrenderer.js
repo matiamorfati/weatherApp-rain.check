@@ -25,7 +25,9 @@ export const DOMrender = (() => {
     DOMelements.banner.innerHTML = `
     <div class="flex-container-weather" >
       <div class="main-weather-card-info-container">
-              <div class="card-title">Right now in ${weatherData.city}</div>
+              <div class="card-title">Right now in ${
+                weatherData.city.split(",")[0]
+              }</div>
               <div class="main-weather-temp">Temperature: ${
                 weatherData.temp
               }°C</div>
@@ -45,7 +47,25 @@ export const DOMrender = (() => {
 
   function Background(weatherStatus) {}
 
-  function ListedCitiesWeather(listedCitiesWeatherData) {}
+  function ListedCitiesWeather(listedCitiesWeatherData) {
+    DOMelements.cityList.innerHTML = listedCitiesWeatherData
+      .map(
+        (cityData) =>
+          `
+    <div class="listed-place border-angled">
+            
+            <div class="city-name">${cityData.city.split(",")[0]}</div>
+            <img class="listed-weather-icon" src="./src/icons/${getIcon(
+              cityData.icon
+            )}" alt="${cityData.icon} icon"/> 
+            <div class="weather-info">${cityData.temp}°C</div>
+            
+            
+    </div>
+          `
+      )
+      .join("");
+  }
 
   function LoadingAnimation() {
     DOMelements.searchBar.innerHTML = "loading";

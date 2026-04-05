@@ -33,7 +33,7 @@ async function fetchWeather(city) {
   return response.json();
 }
 
-function processWeatherData(data) {
+function processWeatherDataForSearched(data) {
   return {
     city: data.resolvedAddress,
     temp: data.currentConditions.temp,
@@ -42,17 +42,43 @@ function processWeatherData(data) {
     humidity: data.currentConditions.humidity,
     rainChance: data.currentConditions.precipprob,
     icon: data.currentConditions.icon,
+    hourly: data.days[0].hours,
+    daily: data.days,
   };
 }
 
-async function getWeatherData(city) {
+function processWeatherDataForCitiesPreview(data) {
+  return {
+    city: data.resolvedAddress,
+    temp: data.currentConditions.temp,
+    icon: data.currentConditions.icon,
+  };
+}
+
+async function getWeatherDataForSearch(city) {
   try {
     const rawData = await fetchWeather(city);
-    return processWeatherData(rawData);
+    return processWeatherDataForSearched(rawData);
   } catch (error) {
-    console.error("", error);
+    console.error("error while fetching searched/home city", error);
     return null;
   }
 }
 
-export default getWeatherData;
+async function getWeatherDataCitiesPreview(cities) {
+  try {
+    const promises = cities.map((city) => fetchWeather(city));
+    const resolvedPromises = await Promise.allSettled(promises);
+
+    const previewData = resolvedPromises
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => processWeatherDataForCitiesPreview(result.value));
+
+    return previewData;
+  } catch (error) {
+    console.error("error while fetching cities preview", error);
+    return [];
+  }
+}
+
+export { getWeatherDataForSearch, getWeatherDataCitiesPreview };
