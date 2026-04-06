@@ -43,7 +43,7 @@
             />
           </div>
           <button class="change-current-city-btn" id="change-home-btn">
-            Change Home City
+            Change Home
           </button>
         </div>
 
@@ -60,28 +60,24 @@
             </div>
             <div class="main-weather-icon">ICON</div>
           </div>
-          <div class="hourly-weather-card border-angled" id="hourly-grid">
-            <div class="hourly-grid-card border-angled">
-              <div class="hour">10</div>
-              <div class="weather-icon-hourly">sunyicon</div>
-              <div class="temperature-hourly">13</div>
-            </div>
-            <div class="hourly-grid-card border-angled">
-              <div class="hour">10</div>
-              <div class="weather-icon-hourly">sunyicon</div>
-              <div class="temperature-hourly">13</div>
-            </div>
-            <div class="hourly-grid-card border-angled">
-              <div class="hour">10</div>
-              <div class="weather-icon-hourly">sunyicon</div>
-              <div class="temperature-hourly">13</div>
-            </div>
-            <div class="hourly-grid-card border-angled">
-              <div class="hour">10</div>
-              <div class="weather-icon-hourly">sunyicon</div>
-              <div class="temperature-hourly">13</div>
-            </div>
+          <div class="hourlyWrapper">
+            <button class="navBtnHourly" id="hourly-left-btn">
+              <img
+                src="./src/icons/navIconLeft.svg"
+                alt="nav button to right"
+                class="navHourlyBtnIcon"
+              />
+            </button>
+            <div class="hourly-weather-card" id="hourly-grid"></div>
+            <button class="navBtnHourly" id="hourly-right-btn">
+              <img
+                src="./src/icons/navIcon.svg"
+                alt="nav button to right"
+                class="navHourlyBtnIcon"
+              />
+            </button>
           </div>
+
           <div class="daily-weather-card border-angled" id="daily-grid">
             <div class="daily-grid-card border-angled">
               <div class="day">monday</div>

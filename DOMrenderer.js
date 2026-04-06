@@ -8,6 +8,8 @@ export const DOMrender = (() => {
     backgroundImg: document.getElementById("background-img"),
     cityList: document.getElementById("listed-cities"),
     searchBar: document.getElementById("search-div"),
+    hourlyLeftBtn: document.getElementById("hourly-left-btn"),
+    hourlyRightBtn: document.getElementById("hourly-right-btn"),
   };
 
   function MainSearchedWeather(weatherData) {
@@ -17,7 +19,26 @@ export const DOMrender = (() => {
     Background(weatherData.description);
   }
 
-  function HourlyWeather(weatherData) {}
+  function HourlyWeather(weatherData) {
+    const hourlyWeatherData = weatherData.hourly;
+    DOMelements.hourlyGrid.innerHTML = hourlyWeatherData
+
+      .map(
+        ({ datetime, temp, icon }, index) =>
+          `
+         <div class="hourly-grid-card ">
+              <div class="hour">${
+                index == 0 ? "Now" : parseInt(datetime.split(":")[0])
+              }</div>
+                <img class=".listed-weather-icon" src="./src/icons/${getIcon(
+                  icon
+                )}" alt="${icon} icon"/> 
+              <div class="temperature-hourly">${Math.round(temp)}°C</div>
+            </div>
+            `
+      )
+      .join("");
+  }
 
   function DailyWeather(weatherData) {}
 
@@ -58,7 +79,7 @@ export const DOMrender = (() => {
             <img class="listed-weather-icon" src="./src/icons/${getIcon(
               cityData.icon
             )}" alt="${cityData.icon} icon"/> 
-            <div class="weather-info">${cityData.temp}°C</div>
+            <div class="weather-info">${Math.round(cityData.temp)}°C</div>
             
             
     </div>
@@ -94,6 +115,7 @@ export const DOMrender = (() => {
   function DOMrenderInit(listedCitiesWeatherData, homeCityData) {
     MainSearchedWeather(homeCityData);
     ListedCitiesWeather(listedCitiesWeatherData);
+    HourlyWeather(homeCityData);
   }
 
   return {

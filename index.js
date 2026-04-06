@@ -19,6 +19,7 @@ async function handleWeatherFormSubmit(location) {
 async function pageInit(homeCity, listedCities) {
   const homeCityData = await getWeatherDataForSearch(homeCity);
   const listedCitiesData = await getWeatherDataCitiesPreview(listedCities);
+
   DOMrender.DOMrenderInit(listedCitiesData, homeCityData);
 }
 

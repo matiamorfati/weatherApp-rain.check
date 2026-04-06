@@ -25,8 +25,7 @@ async function getWeather(city) {
 } */
 
 async function fetchWeather(city) {
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${API_KEY}&include=current`;
-
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${API_KEY}&include=current,hours`;
   const response = await fetch(url);
   if (!response.ok) throw new Error("unable to download data from api");
 
