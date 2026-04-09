@@ -40,22 +40,37 @@ export const DOMrender = (() => {
       .join("");
   }
 
-  function DailyWeather(weatherData) {}
+  function DailyWeather(weatherData) {
+    DOMelements.dailyGrid.innerHTML = weatherData.daily
+      .map(({ datetime, temp, icon }) => {
+        const date = new Date(datetime);
+        const weekDay = date.toLocaleDateString("en-US", { weekday: "short" });
+        return `
+            <div class="daily-grid-card">
+              <div class="day">${weekDay}</div>
+              <img class=".listed-weather-icon" src="./src/icons/${getIcon(
+                icon
+              )}" alt="${icon} icon"/> 
+              <div class="temperature-hourly">${Math.round(temp)}°C</div>
+            </div>
+            `;
+      })
+      .join("");
+  }
 
   function WeatherBanner(weatherData) {
     DOMelements.banner.innerHTML = `
     <div class="flex-container-weather" >
       <div class="main-weather-card-info-container">
-              <div class="card-title">Right now in ${
+              <div class="card-title">Right now in<br> ${
                 weatherData.city.split(",")[0]
               }</div>
+              <div class="main-weather-card-info">
               <div class="main-weather-temp">Temperature: ${
                 weatherData.temp
               }°C</div>
-              <div class="main-weather-card-info">
                 <div>Feels like ${weatherData.feelslike}°C</div>
                 <div>Humidity is ${weatherData.humidity}%</div>
-                <div>Rain check is ${weatherData.rainChance}%</div>
               </div>
       </div>
             <img class="main-weather-icon" src="./src/icons/${getIcon(
@@ -73,7 +88,7 @@ export const DOMrender = (() => {
       .map(
         (cityData) =>
           `
-    <div class="listed-place border-angled">
+    <div class="listed-place">
             
             <div class="city-name">${cityData.city.split(",")[0]}</div>
             <img class="listed-weather-icon" src="./src/icons/${getIcon(
@@ -89,41 +104,30 @@ export const DOMrender = (() => {
   }
 
   function LoadingAnimation() {
-    DOMelements.searchBar.innerHTML = "loading";
+    DOMelements.cityList.classList.add("loadingAnim");
   }
 
   function EndLoadingAnimation() {
-    DOMelements.searchBar.innerHTML = `
-    <button type="submit" class="search-bar-btn">
-                <img
-                  class="search-icon"
-                  src="./src/icons/search-2903.svg"
-                  alt="search button"
-                />
-              </button>
-              <input
-                type="text"
-                id="location-input"
-                name="location"
-                placeholder="Adress, City or Zip Code"
-                required
-              />`;
+    DOMelements.cityList.classList.remove("loadingAnim");
   }
 
-  function Error(errorMesage) {}
-
-  function DOMrenderInit(listedCitiesWeatherData, homeCityData) {
+  function DOMrenderInitMain(homeCityData) {
     MainSearchedWeather(homeCityData);
-    ListedCitiesWeather(listedCitiesWeatherData);
+
     HourlyWeather(homeCityData);
+    DailyWeather(homeCityData);
+  }
+
+  function DOMrenderInitCities(listedCitiesWeatherData) {
+    ListedCitiesWeather(listedCitiesWeatherData);
   }
 
   return {
-    DOMrenderInit,
+    DOMrenderInitMain,
+    DOMrenderInitCities,
     MainSearchedWeather,
     LoadingAnimation,
     EndLoadingAnimation,
-    Error,
     WeatherBanner,
   };
 })();

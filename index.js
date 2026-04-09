@@ -6,32 +6,33 @@ DOMcontrollerInit(handleWeatherFormSubmit);
 
 async function handleWeatherFormSubmit(location) {
   try {
-    DOMrender.LoadingAnimation();
-    const weatherData = await getWeatherDataForSearcha(location);
+    const weatherData = await getWeatherDataForSearch(location);
     DOMrender.MainSearchedWeather(weatherData);
   } catch (error) {
     DOMrender.Error(error);
-  } finally {
-    DOMrender.EndLoadingAnimation();
   }
 }
 
 async function pageInit(homeCity, listedCities) {
-  const homeCityData = await getWeatherDataForSearch(homeCity);
-  const listedCitiesData = await getWeatherDataCitiesPreview(listedCities);
+  DOMrender.LoadingAnimation();
 
-  DOMrender.DOMrenderInit(listedCitiesData, homeCityData);
+  const homeCityData = await getWeatherDataForSearch(homeCity);
+  DOMrender.DOMrenderInitMain(homeCityData);
+
+  const listedCitiesData = await getWeatherDataCitiesPreview(listedCities);
+  DOMrender.DOMrenderInitCities(listedCitiesData);
+  DOMrender.EndLoadingAnimation();
 }
 
-/* let homeCity = "krakow";
-DOMcontrollerInit(handleWeatherFormSubmit);
-pageInit();
-
-const weatherData = await getWeatherDataForSearch("ladek zdroj");
-DOMrender.WeatherBanner(weatherData);
- */
-
-const homeCity = "Ladek Zdroj";
-const listedCities = ["Warsaw", "Gdansk", "Wroclaw", "Katowice", "Krakow"];
+const homeCity = "Ladek p0Zdroj";
+const listedCities = [
+  "Warsaw",
+  "Gdansk",
+  "Wroclaw",
+  "Katowice",
+  "Krakow",
+  "Gliwice",
+  "Gdynia",
+];
 
 pageInit(homeCity, listedCities);

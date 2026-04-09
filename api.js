@@ -64,15 +64,32 @@ async function getWeatherDataForSearch(city) {
   }
 }
 
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function getWeatherDataCitiesPreview(cities) {
   try {
-    const promises = cities.map((city) => fetchWeather(city));
-    const resolvedPromises = await Promise.allSettled(promises);
+    /*   const promises = cities.map((city) => fetchWeather(city));
+    const resolvedPromises = await Promise.allSettled(promises); */
 
-    const previewData = resolvedPromises
+    const resolvedPromises = [];
+
+    for (const city of cities) {
+      const cityData = await fetchWeather(city);
+      resolvedPromises.push(cityData);
+
+      await delay(100);
+    }
+
+    /*     const previewData = resolvedPromises
       .filter((result) => result.status === "fulfilled")
       .map((result) => processWeatherDataForCitiesPreview(result.value));
+ */
 
+    const previewData = resolvedPromises.map((json) =>
+      processWeatherDataForCitiesPreview(json)
+    );
     return previewData;
   } catch (error) {
     console.error("error while fetching cities preview", error);

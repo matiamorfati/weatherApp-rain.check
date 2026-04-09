@@ -50,75 +50,47 @@
         <div class="weather-section border-angled drop-shadow grid-card">
           <div class="main-weather-card" id="weather-output">
             <div class="main-weather-card-info-container">
-              <div class="card-title">Right now in Krakow</div>
-              <div class="main-weather-temp">14C</div>
-              <div class="main-weather-card-info">
-                <div>Feels like 10C</div>
-                <div>Humidity is 80%</div>
-                <div>Rain check is 50%</div>
-              </div>
+              <div class="card-title"></div>
+              <div class="main-weather-temp"></div>
+              <div class="main-weather-card-info"></div>
             </div>
-            <div class="main-weather-icon">ICON</div>
+            <div class="main-weather-icon"></div>
           </div>
           <div class="hourlyWrapper">
             <button class="navBtnHourly" id="hourly-left-btn">
-              <img
-                src="./src/icons/navIconLeft.svg"
-                alt="nav button to right"
-                class="navHourlyBtnIcon"
-              />
+              <svg
+                viewBox="0 0 24 24"
+                preserveAspectRatio="none"
+                class="navHourlyBtnIcon iconPrev"
+              >
+                <path d="M11 3 L17 12 L11 21" />
+              </svg>
             </button>
             <div class="hourly-weather-card" id="hourly-grid"></div>
             <button class="navBtnHourly" id="hourly-right-btn">
-              <img
+              <svg
+                viewBox="0 0 24 24"
+                preserveAspectRatio="none"
+                class="navHourlyBtnIcon"
+              >
+                <path d="M11 3 L17 12 L11 21" />
+              </svg>
+              <!--  <img
                 src="./src/icons/navIcon.svg"
                 alt="nav button to right"
                 class="navHourlyBtnIcon"
-              />
+              /> -->
             </button>
           </div>
-
-          <div class="daily-weather-card border-angled" id="daily-grid">
-            <div class="daily-grid-card border-angled">
-              <div class="day">monday</div>
-              <div class="weather-icon-daily">sunnyicon</div>
-              <div class="temperature-hourly">20</div>
-            </div>
-            <div class="daily-grid-card border-angled">
-              <div class="day">monday</div>
-              <div class="weather-icon-daily">sunnyicon</div>
-              <div class="temperature-hourly">20</div>
-            </div>
-            <div class="daily-grid-card border-angled">
-              <div class="day">monday</div>
-              <div class="weather-icon-daily">sunnyicon</div>
-              <div class="temperature-hourly">20</div>
-            </div>
+          <div class="dailyWrapper">
+            <div class="daily-weather-card" id="daily-grid"></div>
           </div>
         </div>
 
-        <div class="places-listed border-angled grid-card" id="listed-cities">
-          <div class="listed-place border-angled">
-            <div class="city-name">Warsaw</div>
-            <div class="weather-info">18C feels like 10C, Rain</div>
-          </div>
-          <div class="listed-place border-angled">
-            <div class="city-name">Warsaw</div>
-            <div class="weather-info">18C feels like 10C, Rain</div>
-          </div>
-          <div class="listed-place border-angled">
-            <div class="city-name">Warsaw</div>
-            <div class="weather-info">18C feels like 10C, Rain</div>
-          </div>
-          <div class="listed-place border-angled">
-            <div class="city-name">Warsaw</div>
-            <div class="weather-info">18C feels like 10C, Rain</div>
-          </div>
-          <div class="listed-place border-angled">
-            <div class="city-name">Warsaw</div>
-            <div class="weather-info">18C feels like 10C, Rain</div>
-          </div>
-        </div>
+        <div
+          class="places-listed border-angled grid-card"
+          id="listed-cities"
+        ></div>
       </div>
     </div>
 
