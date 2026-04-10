@@ -13,6 +13,7 @@ export function DOMcontrollerInit(handleWeatherFormSubmit) {
     const formData = new FormData(e.target);
     const location = formData.get("location");
     handleWeatherFormSubmit(e.target.location.value);
+    getWeatherForm.reset();
   });
 
   hourlyLeftBtn.addEventListener("click", () => {
