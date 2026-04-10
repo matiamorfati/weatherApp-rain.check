@@ -120,9 +120,13 @@ h6 {
 }
 body {
   background-color: var(--color-bg);
-  font-size: var(--fs-base);
+
   font-family: "base-font", Arial, Helvetica, sans-serif;
   color: rgb(46, 45, 45);
+}
+
+html {
+  font-size: 15px;
 }
 
 .main-page {
@@ -242,9 +246,10 @@ body {
   grid-area: 2/4/2/4;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
-  gap: clamp(var(--space-1), 2vw, var(--space-3));
+  flex: 0;
+  gap: clamp(8px, 0.75vw, var(--space-3));
 }
 
 #weather-form {
